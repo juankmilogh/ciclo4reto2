@@ -50,5 +50,8 @@ public class UsersRepository {
       public Optional<Users> authenticateUser(String email, String password) {
         return usersInterfaces.findByEmailAndPassword(email, password);
     }
+       public Optional<Users> lastUserId(){
+        return usersInterfaces.findTopByOrderByIdDesc();
+    }
 
 }

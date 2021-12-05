@@ -12,6 +12,7 @@ package com.reto2.reto2.Model;
 
 
 
+import java.util.Date;
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
@@ -30,6 +31,8 @@ public class Users {
     private Integer id;
     private String identification;
     private String name;
+    private Date birthtDay;
+    private String monthBirthtDay;
     private String address;
     private String cellPhone;
     private String email;

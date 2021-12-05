@@ -16,4 +16,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface UsersInterfaces extends MongoRepository<Users, Integer>{
     Optional<Users> findByEmail(String email);
     Optional<Users> findByEmailAndPassword(String email, String password);
+    Optional<Users> findTopByOrderByIdDesc();
 }

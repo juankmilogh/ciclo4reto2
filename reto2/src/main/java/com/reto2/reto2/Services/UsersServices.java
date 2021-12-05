@@ -29,9 +29,17 @@ public class UsersServices {
         return usersRepository.getUser(id);
     }
     public Users create(Users user) {
+        Optional<Users> userIdMaximo = usersRepository.lastUserId();
+        
+        
         if (user.getId() == null) {
-            return user;            
-        }else {
+            
+            if (userIdMaximo.isEmpty())
+                user.setId(1);
+            else
+                user.setId(userIdMaximo.get().getId() + 1);
+        }
+    
             Optional<Users> e = usersRepository.getUser(user.getId());
             if (e.isEmpty()) {
                 if (emailExists(user.getEmail())==false){
@@ -42,7 +50,7 @@ public class UsersServices {
             }else{
                 return user;
             }           
-        }
+        
     }
 
     public Users update(Users user) {
