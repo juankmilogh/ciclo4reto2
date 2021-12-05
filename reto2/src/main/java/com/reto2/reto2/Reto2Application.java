@@ -1,5 +1,6 @@
 package com.reto2.reto2;
 
+import com.reto2.reto2.interfaces.OrdersInterfaces;
 import com.reto2.reto2.interfaces.ProductoInterfaces;
 import com.reto2.reto2.interfaces.UsersInterfaces;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class Reto2Application implements CommandLineRunner {
         private UsersInterfaces usersInterfaces;
         @Autowired
         private ProductoInterfaces productoInterfaces;
+        @Autowired
+        private OrdersInterfaces ordersInterfaces;
         
 	public static void main(String[] args) {
 		SpringApplication.run(Reto2Application.class, args);
@@ -24,6 +27,7 @@ public class Reto2Application implements CommandLineRunner {
         public void run(String... args) throws Exception {
             usersInterfaces.deleteAll();
             productoInterfaces.deleteAll();
+            ordersInterfaces.deleteAll();
         }
 
 }
