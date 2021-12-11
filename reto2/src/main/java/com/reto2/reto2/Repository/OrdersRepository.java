@@ -86,11 +86,12 @@ public class OrdersRepository {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Query query = new Query();
         
-        Criteria dateCriteria = Criteria.where("registerDay")
+        Criteria criterio = Criteria.where("registerDay")
                         .gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
                         .lt(LocalDate.parse(dateStr, dtf).plusDays(1).atStartOfDay())
                         .and("salesMan.id").is(id);
         
+        query.addCriteria(criterio);
         List<Orders> orders = mongoTemplate.find(query,Orders.class);
         
         return orders;       
